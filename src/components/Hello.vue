@@ -1,29 +1,30 @@
 <template>
   <div class="hello">
-   <b-container fluid class="bv-example-row">
-    <b-row>
-        <b-col>1 of 3</b-col>
-        <b-col>2 of 3</b-col>
-        <b-col>3 of 3</b-col>
-    </b-row>
-</b-container>
+   
+      <searchResult/>       
+ 
   </div>
 </template>
 
 <script>
+import SearchResult from "@/components/SearchResult.vue";
 export default {
-  name: 'hello',
-  data () {
+  name: "hello",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+     
+    };
+  },
+  components: {
+    SearchResult
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
