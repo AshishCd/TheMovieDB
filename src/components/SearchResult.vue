@@ -1,7 +1,8 @@
 <template>
 <div class="searchResultWrapper">
     <b-container fluid class="searchHeader">      
-      <h1>{{mainTitle}}</h1>
+      <h1>{{mainTitle}} {{movies.total_results}}</h1>
+      <h2 v-for="(item, index) in movies" :key="index">{{item}}</h2>
     </b-container>
     <b-container fluid class="searchInput">
        <b-container>
@@ -12,15 +13,29 @@
           </b-row>
         </b-container>
     </b-container>
+    <b-container fluid>
+      <b-container>
+        <b-row>
+          <PopularMovie/>
+        </b-row>
+      </b-container>
+    </b-container>
 </div>
 </template>
 <script>
-import { mapState } from "vuex";
-
+import PopularMovie from "@/components/PopularMovies.vue"
+import { mapState, mapActions } from "vuex";
 export default {
   name: "searchResult",
   computed: {
-    ...mapState(["mainTitle"])
+    ...mapState(["mainTitle", "movies"]),
+    
+  },
+  mounted(){
+     this.$store.dispatch('loadMovies')
+  },
+  components:{
+    PopularMovie
   }
 };
 </script>
