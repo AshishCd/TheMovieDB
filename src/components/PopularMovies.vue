@@ -1,16 +1,17 @@
 <template>
    <b-container>
        <b-row>
-           <b-col>
+           <b-col>             
                <h3 class="sectionHead">Popular Movies</h3></b-col>
        </b-row>
-       <b-row class="cardRow" v-for="(movie, index) in movies" :key="index">
-           <div>
-       <b-col cols="6" class="cardWrap">
+       <b-row class="cardRow">          
+       <b-col cols="6" class="cardWrap" v-for="(movie, index) in movies" :key="index">
            <b-row class="rowCard">
                <b-col cols="4">
                    <div class="image_content">
-                   <a class="img-result"><img src="https://image.tmdb.org/t/p/w500//2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg" /></a>
+                   <a class="img-result">                  
+                     <img :src="'https://image.tmdb.org/t/p/w500/' + `${movie.poster_path}`">
+                    </a>
                    </div>
                    </b-col>
                <b-col cols="8">                  
@@ -22,7 +23,7 @@
                                    </div>
                                    </div>
                                    <div>
-                               <a>Venom</a>
+                               <a>{movie.title}</a>
                                <span>October  5, 2018</span>
                                    </div>
                            </div>
@@ -33,8 +34,7 @@
                        </div>
                    </b-col>
            </b-row>          
-       </b-col>    
-        </div>        
+       </b-col>                
        </b-row>
    </b-container>
 
@@ -43,8 +43,9 @@
 
 <script>
 import { mapState } from "vuex";
+
 export default {
-  name: "popularMovie",
+  name: "popularMovie",  
   computed: {
     ...mapState(["movies"])
   },
@@ -119,8 +120,9 @@ export default {
 }
 
 p.view_more {
-  border-top: 1px solid #e3e3e3;
-  padding-top: 10px;
+    border-top: 1px solid #e3e3e3;
+    padding-top: 10px;
+    margin-bottom: 0px !important;
 }
 
 h3.sectionHead {

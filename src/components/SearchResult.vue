@@ -26,7 +26,7 @@
 import PopularMovie from "@/components/PopularMovies.vue"
 import { mapState, mapActions } from "vuex";
 export default {
-  name: "searchResult",
+  name: "searchResult",  
   computed: {
     ...mapState(["mainTitle", "movies"]),
     
