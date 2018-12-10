@@ -26,7 +26,7 @@
 import PopularMovie from "@/components/PopularMovies.vue"
 import { mapState, mapActions } from "vuex";
 export default {
-  name: "searchResult",
+  name: "searchResult",  
   computed: {
     ...mapState(["mainTitle", "movies"]),
     
@@ -41,7 +41,7 @@ export default {
 </script>
 <style scoped>
 .searchHeader {
-  background-color: #000;
+  background-color: #fff;
   min-height: 100px;
 }
 

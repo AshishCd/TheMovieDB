@@ -14,8 +14,7 @@ export default new Vuex.Store({
       axios
         .get("https://api.themoviedb.org/3/movie/popular?api_key=5f2c030f1a7d00715ae868ea96dfaeef&language=en-US&page=1&region=US")
         .then(data => {
-          let moviesData = data.data;
-          console.log(moviesData);
+          let moviesData = data.data.results;         
           commit('SEARCHED_MOVIES', moviesData);
         })
         .catch(error => {
