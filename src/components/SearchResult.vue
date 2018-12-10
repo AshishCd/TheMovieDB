@@ -41,7 +41,7 @@ export default {
 </script>
 <style scoped>
 .searchHeader {
-  background-color: #000;
+  background-color: #fff;
   min-height: 100px;
 }
 

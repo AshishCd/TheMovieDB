@@ -4,8 +4,9 @@
            <b-col>             
                <h3 class="sectionHead">Popular Movies</h3></b-col>
        </b-row>
-       <b-row class="cardRow">          
-       <b-col cols="6" class="cardWrap" v-for="(movie, index) in movies" :key="index">
+       <b-row class="cardRow">                   
+       <b-col cols="6" v-for="(movie, index) in movies" :key="index">
+         <div class="cardWrap">
            <b-row class="rowCard">
                <b-col cols="4">
                    <div class="image_content">
@@ -19,21 +20,20 @@
                         <div class="wrapperName">                       
                            <div class="nameRight">
                                <div class="outerVote">
-                                   <div class="innerVote">6.5
-                                   </div>
+                                   <div class="innerVote">{{movie.vote_average}}</div>
                                    </div>
                                    <div>
-                               <a>{movie.title}</a>
+                               <a>{{movie.title}}</a>
                                <span>October  5, 2018</span>
                                    </div>
                            </div>
                        </div>
-                       <p class="overView">Eddie Brock is a reporter—investigating people who want to go unnoticed. But after he makes a terrible discovery at the Life Foundation, he begins to transform into ‘Venom’. The Foundation has discovered creatures...
-                       </p>
+                       <p class="overView">{{movie.overview | truncate(200, '...') }}</p>
                        <p class="view_more"><a>More Info</a></p>
                        </div>
                    </b-col>
-           </b-row>          
+           </b-row>  
+           </div>        
        </b-col>                
        </b-row>
    </b-container>
@@ -45,14 +45,18 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "popularMovie",  
+  name: "popularMovie",
   computed: {
     ...mapState(["movies"])
   },
   mounted() {
     this.$store.dispatch("loadMovies");
-  }
-};
+  },
+  filters: {
+        truncate: function (text, length, suffix) {
+            return text.substring(0, length) + suffix;
+        },
+} }
 </script>
 
 <style>
@@ -93,8 +97,8 @@ export default {
 .cardWrap {
   -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
-  padding: 10px;
   margin: 10px;
+  min-height: 312px;
 }
 
 .cardRow {
@@ -120,9 +124,9 @@ export default {
 }
 
 p.view_more {
-    border-top: 1px solid #e3e3e3;
-    padding-top: 10px;
-    margin-bottom: 0px !important;
+  border-top: 1px solid #e3e3e3;
+  padding-top: 10px;
+  margin-bottom: 0px !important;
 }
 
 h3.sectionHead {
