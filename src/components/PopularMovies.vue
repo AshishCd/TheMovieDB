@@ -4,7 +4,7 @@
            <b-col>             
                <h3 class="sectionHead">Popular Movies</h3></b-col>
        </b-row>
-       <b-row class="cardRow">                   
+       <b-row>                   
        <b-col cols="6" v-for="(movie, index) in movies" :key="index">
          <div class="cardWrap">
            <b-row class="rowCard">
@@ -28,7 +28,7 @@
                                    </div>
                            </div>
                        </div>
-                       <p class="overView">{{movie.overview | truncate(200, '...') }}</p>
+                       <p class="overView">{{movie.overview | truncate(100, '...') }}</p>
                        <p class="view_more"><a>More Info</a></p>
                        </div>
                    </b-col>
@@ -62,7 +62,7 @@ export default {
 <style>
 .info {
   box-sizing: border-box;
-  padding: 10px 16px 0px 16px;
+  padding: 10px 10px 0px 20px;
 }
 
 .overView {
@@ -98,7 +98,7 @@ export default {
   -webkit-box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
   margin: 10px;
-  min-height: 312px;
+  min-height: 278px;
 }
 
 .cardRow {
@@ -111,11 +111,11 @@ export default {
 }
 
 .nameRight a {
-  width: 100%;
-  display: block;
-  font-weight: 600;
-  font-size: 1.5em;
-  line-height: 1.1em;
+    width: 100%;
+    display: block;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.5em;
 }
 
 .nameRight span {
@@ -143,11 +143,12 @@ h3.sectionHead {
   color: #ffffff;
 }
 .innerVote {
-  /* margin-right: 10px; */
-  background: #046e49;
-  padding: 11px;
-  border-radius: 50%;
-  color: #ffffff;
+  background: #9C0508;
+    padding: 11px;
+    border-radius: 50%;
+    color: #ffffff;
+    min-width: 44px;
+    text-align: center;
 }
 
 .nameRight {
