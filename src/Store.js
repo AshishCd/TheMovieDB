@@ -7,15 +7,22 @@ Vue.use(Vuex, axios);
 export default new Vuex.Store({
   state: {
     mainTitle: "The Movie DB",
-    movies: []
+    movies: [], 
+    currentPage : 1,
+    totalPages:1
   },
   actions: {
     loadMovies({ commit }) {
       axios
         .get("https://api.themoviedb.org/3/movie/popular?api_key=5f2c030f1a7d00715ae868ea96dfaeef&language=en-US&page=1&region=US")
         .then(data => {
-          let moviesData = data.data.results;         
+          console.log(data)
+          let moviesData = data.data.results;
+          let currentPage = data.data.page;
+          let totalPages = data.data.total_pages;         
           commit('SEARCHED_MOVIES', moviesData);
+          commit('CURRENT_PAGES', currentPage);
+          commit('TOTAL_PAGES', totalPages);
         })
         .catch(error => {
           console.log(console.error);
@@ -23,9 +30,14 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    SEARCHED_MOVIES(state, moviesData) {
-      console.log("hey", moviesData);
+    SEARCHED_MOVIES(state, moviesData) {     
       state.movies = moviesData;
+    },
+    CURRENT_PAGES(state, currentPage){
+      state.currentPage = currentPage;
+    },
+    TOTAL_PAGES(state, totalPages){
+      state.totalPages = totalPages;
     }
   }
 });

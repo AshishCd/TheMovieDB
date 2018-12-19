@@ -36,27 +36,43 @@
            </div>        
        </b-col>                
        </b-row>
-   </b-container>
-
-
+       <b-row class="marginVertical">
+         <b-col> <b-pagination align="center" :total-rows="totalPages" v-model="currentPage" :per-page="10">
+    </b-pagination></b-col>
+       </b-row>
+   </b-container> 
+  
 </template>
 
 <script>
 import { mapState } from "vuex";
 
+
 export default {
   name: "popularMovie",
+  components: {
+    
+  },
   computed: {
-    ...mapState(["movies"])
+    ...mapState(["movies", "currentPage", "totalPages"])
   },
   mounted() {
     this.$store.dispatch("loadMovies");
   },
+  methods: {
+    nextPage() {
+      this.currentPage++;
+    },
+    prevPage() {
+      this.currentPage--;
+    }
+  },
   filters: {
-        truncate: function (text, length, suffix) {
-            return text.substring(0, length) + suffix;
-        },
-} }
+    truncate: function(text, length, suffix) {
+      return text.substring(0, length) + suffix;
+    }
+  }
+};
 </script>
 
 <style>
@@ -111,11 +127,11 @@ export default {
 }
 
 .nameRight a {
-    width: 100%;
-    display: block;
-    font-weight: 600;
-    font-size: 17px;
-    line-height: 1.5em;
+  width: 100%;
+  display: block;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.5em;
 }
 
 .nameRight span {
@@ -143,18 +159,23 @@ h3.sectionHead {
   color: #ffffff;
 }
 .innerVote {
-  background: #9C0508;
-    padding: 11px;
-    border-radius: 50%;
-    color: #ffffff;
-    min-width: 44px;
-    text-align: center;
+  background: #9c0508;
+  padding: 11px;
+  border-radius: 50%;
+  color: #ffffff;
+  min-width: 44px;
+  text-align: center;
 }
 
 .nameRight {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.marginVertical{
+  margin-top:20px;
+  margin-bottom: 30px
 }
 
 /*Circular Progress*/

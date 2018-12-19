@@ -1,12 +1,14 @@
 <template>
   <div class="hello">
    
-      <searchResult/>       
+      <searchResult/> 
+      <Footer />      
  
   </div>
 </template>
 
 <script>
+import Footer from "@/components/Footer.vue";
 import SearchResult from "@/components/SearchResult.vue";
 export default {
   name: "hello",
@@ -16,7 +18,8 @@ export default {
     };
   },
   components: {
-    SearchResult
+    SearchResult,
+    Footer
   }
 };
 </script>
