@@ -1,14 +1,10 @@
 <template>
-<div class="searchResultWrapper">
-    <b-container fluid class="searchHeader">      
-      <h1>{{mainTitle}} {{movies.total_results}}</h1>
-      <h2 v-for="(item, index) in movies" :key="index">{{item}}</h2>
-    </b-container>
+<div class="searchResultWrapper">   
     <b-container fluid class="searchInput">
        <b-container>
           <b-row>
           <b-col>
-            <input type="text" placeholder="Search" class="searchInput" id="searchText"/>
+            <input type="text" placeholder="Search for a movie, tv show, person..." class="searchInput" id="searchText"/>
           </b-col>
           </b-row>
         </b-container>
@@ -47,9 +43,13 @@ export default {
 
 .searchInput {
   background-color: #fff;
-  height: 46px;
-  border-bottom: 1px solid #dedede;
-  width: 100%;
+    width: 100%;
+    border: 0px none;
+}
+
+.searchInput input::placeholder {
+  color: #ada49f;
+  font-size: 20px;
 }
 
 searchInput {
@@ -61,5 +61,15 @@ searchInput {
   outline: none;
   font-family: Arial, sans-serif;
   font-style: italic;
+}
+
+input#searchText {
+    padding: 10px 0;
+    font-size: 20px;
+    color: #ada49f;
+}
+
+.searchInput.container-fluid {
+    border-bottom: 2px solid #f2f2f2;
 }
 </style>

@@ -178,5 +178,9 @@ h3.sectionHead {
   margin-bottom: 30px
 }
 
+.container-fluid.mainWrap {
+    margin-top: 30px;
+}
+
 /*Circular Progress*/
 </style>

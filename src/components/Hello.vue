@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-   
+    <Header/>
       <searchResult/> 
       <Footer />      
  
@@ -9,6 +9,7 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Header from "@/components/Header.vue";
 import SearchResult from "@/components/SearchResult.vue";
 export default {
   name: "hello",
@@ -19,7 +20,8 @@ export default {
   },
   components: {
     SearchResult,
-    Footer
+    Footer,
+    Header
   }
 };
 </script>
