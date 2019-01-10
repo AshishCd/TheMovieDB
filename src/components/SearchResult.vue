@@ -28,7 +28,7 @@ export default {
     
   },
   mounted(){
-     this.$store.dispatch('loadMovies')
+     this.$store.dispatch('loadMovies', {currentPage: 1})
   },
   components:{
     PopularMovie

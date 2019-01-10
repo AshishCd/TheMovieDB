@@ -50,8 +50,9 @@
   </b-container> 
 </template>
 <script>
+ import moment from 'moment'
 export default {
-  name: "header"
+  name: "headerMain"
 };
 </script>
 <style scoped>

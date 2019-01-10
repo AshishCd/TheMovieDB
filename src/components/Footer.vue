@@ -53,7 +53,7 @@
 
 <script>
 export default {
-  name: "footer"
+  name: "footerMain"
 };
 </script>
 <style>
