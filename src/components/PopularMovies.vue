@@ -24,7 +24,7 @@
                                    </div>
                                    <div>
                                <a>{{movie.title}}</a>
-                               <span>October  5, 2018</span>
+                               <span>{{movie.release_date | formatDate}}</span>
                                    </div>
                            </div>
                        </div>
@@ -37,7 +37,7 @@
        </b-col>                
        </b-row>
        <b-row class="marginVertical">
-         <b-col> <b-pagination align="center" :total-rows="totalPages" v-model="currentPage" :per-page="10">
+         <b-col><b-pagination align="center" :total-rows="totalPages" v-model="currentPage" :per-page="10" @change="fetchdata">
     </b-pagination></b-col>
        </b-row>
    </b-container> 
@@ -46,30 +46,35 @@
 
 <script>
 import { mapState } from "vuex";
-
+import moment from 'moment'
 
 export default {
   name: "popularMovie",
+  data: () => ({
+    currentPage: 1
+  }),
   components: {
     
   },
   computed: {
-    ...mapState(["movies", "currentPage", "totalPages"])
+    ...mapState(["movies", "totalPages"])
   },
   mounted() {
-    this.$store.dispatch("loadMovies");
+    this.$store.dispatch("loadMovies", {currentPage: this.currentPage});
   },
   methods: {
-    nextPage() {
-      this.currentPage++;
-    },
-    prevPage() {
-      this.currentPage--;
+    fetchdata(currentPage){
+      console.log(currentPage);
+      this.$store.dispatch("loadMovies", {currentPage});
     }
+  
   },
   filters: {
     truncate: function(text, length, suffix) {
       return text.substring(0, length) + suffix;
+    },
+    formatDate: function(val) {
+      return moment(String(val)).format('ll')
     }
   }
 };
@@ -153,18 +158,19 @@ h3.sectionHead {
 
 .outerVote {
   margin-right: 10px;
-  background: #000;
+  background: #846d6d;
   padding: 6px;
   border-radius: 50%;
   color: #ffffff;
 }
 .innerVote {
-  background: #9c0508;
+  background: #545151;
   padding: 11px;
   border-radius: 50%;
   color: #ffffff;
   min-width: 44px;
   text-align: center;
+  font-weight: 500;
 }
 
 .nameRight {
