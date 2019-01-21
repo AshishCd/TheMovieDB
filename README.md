@@ -1,5 +1,7 @@
 # themoviedb
 
+![screenshot at jan 21 12-39-43](https://user-images.githubusercontent.com/39944703/51458029-bc5d7300-1d79-11e9-9096-853593c52599.png)
+
 > A vue js project for movies
 
 ## Build Setup
